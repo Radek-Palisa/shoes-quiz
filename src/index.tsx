@@ -5,6 +5,7 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import Router from './components/Router';
+import ErrorBoundary from './components/ErrorBoundary';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -16,11 +17,13 @@ const queryClient = new QueryClient({
 
 ReactDOM.render(
   <StrictMode>
-    <QueryClientProvider client={queryClient}>
-      <Router>
-        <App />
-      </Router>
-    </QueryClientProvider>
+    <ErrorBoundary>
+      <QueryClientProvider client={queryClient}>
+        <Router>
+          <App />
+        </Router>
+      </QueryClientProvider>
+    </ErrorBoundary>
   </StrictMode>,
   document.getElementById('root')
 );
