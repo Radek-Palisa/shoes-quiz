@@ -12,16 +12,7 @@ function fetch<T>(requestInfo: RequestInfo): Promise<T> {
   });
 }
 
-export async function fetchQuizQuestions(): Promise<QuizQuestion[]> {
+export async function fetchQuizData() {
   await sleep(200);
-  const { questions } = await fetch<{ questions: QuizQuestion[] }>(
-    API_ENDPOINT
-  );
-  return questions;
-}
-
-export async function fetchQuizShoes(): Promise<QuizShoe[]> {
-  await sleep(400);
-  const { shoes } = await fetch<{ shoes: QuizShoe[] }>(API_ENDPOINT);
-  return shoes;
+  return fetch<{ questions: QuizQuestion[]; shoes: QuizShoe[] }>(API_ENDPOINT);
 }

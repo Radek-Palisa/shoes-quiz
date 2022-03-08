@@ -1,19 +1,9 @@
-type ShoeId =
-  | 'cloud'
-  | 'cloudflow'
-  | 'cloudflyer'
-  | 'cloudsurfer'
-  | 'cloudventure'
-  | 'cloudventure_peak'
-  | 'cloudventure_waterproof'
-  | 'cloudx';
-
-type QuizAnswer = {
+export type QuizAnswer = {
   id: number;
   copy: string;
   /** empty string means the quiz is finished */
   nextQuestion: number | '';
-  ratingIncrease: Record<ShoeId, number>;
+  ratingIncrease: Record<string, number>;
 };
 
 export type QuizQuestion = {
@@ -23,7 +13,7 @@ export type QuizQuestion = {
 };
 
 export type QuizShoe = {
-  id: ShoeId;
+  id: string;
   name: string;
   rating: number;
 };
