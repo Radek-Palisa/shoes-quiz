@@ -5,8 +5,9 @@ export default function Home() {
 
   return (
     <main>
-      <h1>Home</h1>
-      <button onClick={() => setRoute(Routes.Quiz)}>Try on trial</button>
+      <h1>Take the quiz and try your first pair</h1>
+      <button onClick={() => setRoute(Routes.Quiz)}>Try on Trial</button>
+      <p>30 Days risk free</p>
     </main>
   );
 }
