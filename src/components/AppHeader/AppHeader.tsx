@@ -1,5 +1,5 @@
 import styles from './AppHeader.module.css';
-import LogoIcon from './icons/LogoIcon';
+import LogoIcon from '../icons/LogoIcon';
 
 export default function AppHeader() {
   return (

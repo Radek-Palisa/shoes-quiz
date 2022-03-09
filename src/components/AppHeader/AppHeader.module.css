@@ -1,7 +1,10 @@
 .AppHeader {
+  position: sticky;
+  top: 0;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 60px;
+  background-color: #fff;
   border-bottom: 1px solid #f5f2f2;
 }
