@@ -1,0 +1,8 @@
+.HomeBackground {
+  height: 100%;
+  background-color: #f5f2f2;
+  background-repeat: no-repeat;
+  background-size: auto 75%;
+  background-position: 30% 100%;
+  background-image: url("../../../../../public/assets/Background\ Image\ Start\ Screen.png");
+}
