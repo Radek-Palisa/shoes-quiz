@@ -1,3 +1,4 @@
+import Box from '../../components/Box/Box';
 import Heading from '../../components/Heading/Heading';
 import { Routes, useRouter } from '../../components/Router';
 import HomeBackground from './components/HomeBackground/HomeBackground';
@@ -8,7 +9,7 @@ export default function Home() {
   return (
     <main>
       <HomeBackground>
-        <div>
+        <Box padding={{ inline: 'spaceMd' }}>
           <Heading>
             Take the quiz
             <br />
@@ -16,7 +17,7 @@ export default function Home() {
           </Heading>
           <button onClick={() => setRoute(Routes.Quiz)}>Try on Trial</button>
           <p>30 Days risk free</p>
-        </div>
+        </Box>
       </HomeBackground>
     </main>
   );
