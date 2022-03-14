@@ -5,6 +5,8 @@ import { getQuizResult } from '../../services/queries/quizResult';
 import QuizResult from './scenes/QuizResult';
 import { useQuizData } from '../../services/queries/quizData';
 import QuizLoading from './scenes/QuizLoading';
+import QuizLayout from './components/QuizLayout/QuizLayout';
+import Box from '../../components/Box/Box';
 
 type QuizFormState = {
   currentQuestion: number;
@@ -65,45 +67,49 @@ export function Quiz() {
   }
 
   return (
-    <main>
+    <QuizLayout>
       <h1>
         Try on quiz
         <br />
         30 days risk free
       </h1>
-      <form onSubmit={(e) => e.preventDefault()}>
-        {questions.map((question) => {
-          const isCurrentQuestion = question.id === formState.currentQuestion;
+      <Box alignItems="center">
+        <form onSubmit={(e) => e.preventDefault()}>
+          {questions.map((question) => {
+            const isCurrentQuestion = question.id === formState.currentQuestion;
 
-          return (
-            <Fade key={question.id} isShown={isCurrentQuestion}>
-              <fieldset>
-                <legend>{question.copy}</legend>
-                <ul>
-                  {question.answers.map((answer, index) => (
-                    <li key={`${question.id}-${index}`}>
-                      <button
-                        type="button"
-                        onClick={() => handleAnswerClick(answer)}
-                      >
-                        {answer.copy}
-                      </button>
-                    </li>
-                  ))}
-                </ul>
-              </fieldset>
-            </Fade>
-          );
-        })}
-      </form>
-    </main>
+            return (
+              <Fade key={question.id} isShown={isCurrentQuestion}>
+                <fieldset>
+                  <legend>{question.copy}</legend>
+                  <ul>
+                    {question.answers.map((answer, index) => (
+                      <li key={`${question.id}-${index}`}>
+                        <button
+                          type="button"
+                          onClick={() => handleAnswerClick(answer)}
+                        >
+                          {answer.copy}
+                        </button>
+                      </li>
+                    ))}
+                  </ul>
+                </fieldset>
+              </Fade>
+            );
+          })}
+        </form>
+      </Box>
+    </QuizLayout>
   );
 }
 
 export default function QuizSuspenseContainer() {
   return (
-    <Suspense fallback={<QuizLoading />}>
-      <Quiz />
-    </Suspense>
+    <main>
+      <Suspense fallback={<QuizLoading />}>
+        <Quiz />
+      </Suspense>
+    </main>
   );
 }
