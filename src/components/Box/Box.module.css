@@ -2,6 +2,10 @@
   display: flex;
 }
 
+.height-full {
+  height: 100%;
+}
+
 .direction-column {
   flex-direction: column;
 }
@@ -12,6 +16,10 @@
 
 .align-items-center {
   align-items: center;
+}
+
+.justify-content-center {
+  justify-content: center;
 }
 
 .gap-spaceMd {
