@@ -1,0 +1,19 @@
+.root {
+  margin: 0;
+}
+
+.type-small {
+  composes: typography-small from '../../theme/theme.module.css';
+}
+
+.type-body {
+  composes: typography-body from '../../theme/theme.module.css';
+}
+
+.color-primary {
+  color: var(--typography-color-primary);
+}
+
+.color-secondary {
+  color: var(--typography-color-secondary);
+}

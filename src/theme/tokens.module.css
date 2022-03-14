@@ -8,6 +8,7 @@
   'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
   sans-serif;
   --typography-color-primary: #333;
+  --typography-color-secondary: #818181;
   --typography-color-inverted: #fff;
   --space-xs: 8px;
   --space-md: 16px;
