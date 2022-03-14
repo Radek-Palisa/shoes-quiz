@@ -9,14 +9,14 @@ import QuizLoading from './scenes/QuizLoading';
 type QuizFormState = {
   currentQuestion: number;
   rating: Record<string, number>;
-  submitting: boolean;
+  isSubmitting: boolean;
   result: string[] | null;
 };
 
 const initialState = {
   currentQuestion: 0,
   rating: {},
-  submitting: false,
+  isSubmitting: false,
   result: null,
 };
 
@@ -47,7 +47,7 @@ export function Quiz() {
     setFormState({
       currentQuestion: isFinalQuestion ? -1 : nextQuestion,
       rating: Object.fromEntries(newRating),
-      submitting: isFinalQuestion,
+      isSubmitting: isFinalQuestion,
       result: null,
     });
 
@@ -56,7 +56,7 @@ export function Quiz() {
     }
   };
 
-  if (formState.submitting) {
+  if (formState.isSubmitting) {
     return <QuizLoading />;
   }
 
