@@ -10,8 +10,16 @@
   composes: typography-h2 from '../../theme/theme.module.css';
 }
 
+.Heading--type-h4 {
+  composes: typography-h4 from '../../theme/theme.module.css';
+}
+
 .Heading--color-primary {
   color: var(--typography-color-primary);
+}
+
+.Heading--color-secondary {
+  color: var(--typography-color-secondary);
 }
 
 .Heading--color-inverted {

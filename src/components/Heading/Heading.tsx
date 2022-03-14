@@ -1,18 +1,19 @@
 import { ReactNode } from 'react';
 import styles from './Heading.module.css';
 
-type HeadingType = 'h1' | 'h2';
+type HeadingType = 'h1' | 'h2' | 'h4';
 
-const typeToHtml: Record<HeadingType, 'h1' | 'h2'> = {
+const typeToHtml: Record<HeadingType, 'h1' | 'h2' | 'h4'> = {
   h1: 'h1',
   h2: 'h2',
+  h4: 'h4',
 };
 
 type Props = {
   children: ReactNode;
-  as?: 'h1' | 'h2' | 'legend'; // or etc as needed.
+  as?: 'h1' | 'h2' | 'legend' | 'p'; // or etc as needed.
   type?: HeadingType;
-  color?: 'primary' | 'inverted';
+  color?: 'primary' | 'secondary' | 'inverted';
 };
 
 export default function Heading({
