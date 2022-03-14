@@ -1,0 +1,19 @@
+.Heading {
+  margin: 0;
+}
+
+.Heading--type-h1 {
+  composes: typography-h1 from '../../theme/theme.module.css';
+}
+
+.Heading--type-h2 {
+  composes: typography-h2 from '../../theme/theme.module.css';
+}
+
+.Heading--color-primary {
+  color: var(--typography-color-primary);
+}
+
+.Heading--color-inverted {
+  color: var(--typography-color-inverted);
+}
