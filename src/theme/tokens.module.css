@@ -1,0 +1,5 @@
+:global :root {
+  --typography-font-family-serif: 'Roboto Slab', serif;
+  --typography-color-primary: #333;
+  --typography-color-inverted: #fff;
+}

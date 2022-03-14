@@ -1,0 +1,14 @@
+.typography-h1 {
+  font-family: var(--typography-font-family-serif);
+  font-weight: 400;
+  font-size: 1.4rem;
+  letter-spacing: 0.02em;
+  line-height: 1.4;
+}
+
+.typography-h2 {
+  font-family: var(--typography-font-family-serif);
+  font-weight: 400;
+  font-size: 1.2rem;
+  line-height: 1.5;
+}
