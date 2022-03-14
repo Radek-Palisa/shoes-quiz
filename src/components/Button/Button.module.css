@@ -1,0 +1,53 @@
+.root {
+  padding: var(--space-xs) var(--space-md);
+  text-align: center;
+  color: var(--typography-color-inverted);
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+}
+
+.width-full {
+  width: 100%;
+}
+
+.width-min {
+  min-width: 160px;
+}
+
+.width-auto {
+  width: auto;
+}
+
+.color-primary {
+  border: 0;
+  border-top: 4px solid transparent;
+  border-bottom: 4px solid var(--color-pitch-black);
+  background: var(--color-black);
+  composes: typography-button from '../../theme/theme.module.css';
+}
+
+.color-primary:hover {
+  background: var(--color-pitch-black);
+}
+
+.color-secondary {
+  border: 0;
+  border-top: 4px solid transparent;
+  border-bottom: 4px solid var(--color-dark-ocean);;
+  background: var(--color-ocean);
+  composes: typography-button from '../../theme/theme.module.css';
+}
+
+.color-secondary:hover {
+  background: var(--color-dark-ocean);
+}
+
+.color-inverted {
+  background-color: transparent;
+  border: 1px solid var(--typography-color-inverted);
+  composes: typography-button-inverted from '../../theme/theme.module.css';
+}
+
+.color-inverted:hover {
+  background-color: var(--typography-color-inverted);
+  color: var(--typography-color-primary)
+}
