@@ -4,9 +4,10 @@ import Fade from '../../components/transitions/Fade';
 import { getQuizResult } from '../../services/queries/quizResult';
 import QuizResult from './scenes/QuizResult';
 import { useQuizData } from '../../services/queries/quizData';
-import QuizLoading from './scenes/QuizLoading';
+import QuizLoading from './components/QuizLoading/QuizLoading';
 import QuizLayout from './components/QuizLayout/QuizLayout';
 import Box from '../../components/Box/Box';
+import Heading from '../../components/Heading/Heading';
 
 type QuizFormState = {
   currentQuestion: number;
@@ -59,7 +60,15 @@ export function Quiz() {
   };
 
   if (formState.isSubmitting) {
-    return <QuizLoading />;
+    return (
+      <QuizLoading
+        caption={
+          <Heading color="secondary" as="p" type="h4">
+            We&apos;re running to get your results.
+          </Heading>
+        }
+      />
+    );
   }
 
   if (formState.result) {
