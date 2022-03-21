@@ -1,0 +1,12 @@
+.root {
+  margin: 0;
+  composes: typography-caption from '../../theme/theme.module.css';
+}
+
+.color-inverted {
+  color: var(--typography-color-inverted);
+}
+
+.align-center {
+  text-align: center;
+}

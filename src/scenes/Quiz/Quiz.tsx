@@ -8,6 +8,7 @@ import QuizLoading from './components/QuizLoading/QuizLoading';
 import QuizLayout from './components/QuizLayout/QuizLayout';
 import Box from '../../components/Box/Box';
 import Heading from '../../components/Heading/Heading';
+import Caption from '../../components/Caption/Caption';
 
 type QuizFormState = {
   currentQuestion: number;
@@ -81,8 +82,7 @@ export function Quiz() {
         Try on quiz
         <br />
         30 days risk free
-      </h1>
-      <Box alignItems="center">
+      </Caption>
         <form onSubmit={(e) => e.preventDefault()}>
           {questions.map((question) => {
             const isCurrentQuestion = question.id === formState.currentQuestion;
