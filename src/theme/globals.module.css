@@ -1,5 +1,9 @@
 @import './tokens.module.css';
 
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
 :global body {
   margin: 0;
   font-family: var(--typography-font-family-sans-serif);
@@ -7,6 +11,18 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-*, *::before, *::after {
-  box-sizing: border-box;
+:global fieldset {
+  border: 0;
+  padding: 0;
+  margin: 0;
+}
+
+:global legend {
+  padding: 0;
+}
+
+:global ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }

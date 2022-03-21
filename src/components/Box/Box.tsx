@@ -5,7 +5,7 @@ type Space = 'none' | 'spaceMd';
 
 type Props = {
   children: ReactNode;
-  as?: 'div' | 'ul';
+  as?: 'div' | 'ul' | 'li';
   direction?: 'row' | 'column';
   alignItems?: 'start' | 'center';
   justifyContent?: 'start' | 'center';

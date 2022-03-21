@@ -8,7 +8,9 @@ import QuizLoading from './components/QuizLoading/QuizLoading';
 import QuizLayout from './components/QuizLayout/QuizLayout';
 import Box from '../../components/Box/Box';
 import Heading from '../../components/Heading/Heading';
+import Button from '../../components/Button/Button';
 import Caption from '../../components/Caption/Caption';
+import QuizFieldset from './components/QuizFieldset/QuizFieldset';
 
 type QuizFormState = {
   currentQuestion: number;
@@ -78,32 +80,46 @@ export function Quiz() {
 
   return (
     <QuizLayout>
-      <h1>
-        Try on quiz
-        <br />
-        30 days risk free
-      </Caption>
+      <Box
+        alignItems="center"
+        padding={{ block: 'spaceMd', inline: 'spaceMd' }}
+      >
+        <Caption as="h1" color="inverted" align="center">
+          Try on quiz
+          <br />
+          30 days risk free
+        </Caption>
+      </Box>
+      <Box alignItems="center" justifyContent="center">
         <form onSubmit={(e) => e.preventDefault()}>
           {questions.map((question) => {
             const isCurrentQuestion = question.id === formState.currentQuestion;
 
             return (
               <Fade key={question.id} isShown={isCurrentQuestion}>
-                <fieldset>
-                  <legend>{question.copy}</legend>
-                  <ul>
+                <QuizFieldset>
+                  <Heading
+                    as="legend"
+                    type="h2"
+                    color="inverted"
+                    align="center"
+                  >
+                    {question.copy}
+                  </Heading>
+                  <Box as="ul" direction="row" justifyContent="center">
                     {question.answers.map((answer, index) => (
-                      <li key={`${question.id}-${index}`}>
-                        <button
-                          type="button"
+                      <Box as="li" key={`${question.id}-${index}`}>
+                        <Button
+                          color="inverted"
+                          width="full"
                           onClick={() => handleAnswerClick(answer)}
                         >
                           {answer.copy}
-                        </button>
-                      </li>
+                        </Button>
+                      </Box>
                     ))}
-                  </ul>
-                </fieldset>
+                  </Box>
+                </QuizFieldset>
               </Fade>
             );
           })}

@@ -1,0 +1,9 @@
+.root {
+  width: 100vw;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--space-md) * 7);
+  padding-inline: var(--space-md);
+  padding-block: var(--space-md) var(--space-xxxl);
+}
