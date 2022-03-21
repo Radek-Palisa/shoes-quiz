@@ -1,27 +1,31 @@
-.Heading {
+.root {
   margin: 0;
 }
 
-.Heading--type-h1 {
+.type-h1 {
   composes: typography-h1 from '../../theme/theme.module.css';
 }
 
-.Heading--type-h2 {
+.type-h2 {
   composes: typography-h2 from '../../theme/theme.module.css';
 }
 
-.Heading--type-h4 {
+.type-h4 {
   composes: typography-h4 from '../../theme/theme.module.css';
 }
 
-.Heading--color-primary {
+.color-primary {
   color: var(--typography-color-primary);
 }
 
-.Heading--color-secondary {
+.color-secondary {
   color: var(--typography-color-secondary);
 }
 
-.Heading--color-inverted {
+.color-inverted {
   color: var(--typography-color-inverted);
+}
+
+.align-center {
+  text-align: center;
 }

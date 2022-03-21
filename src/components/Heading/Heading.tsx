@@ -14,6 +14,7 @@ type Props = {
   as?: 'h1' | 'h2' | 'legend' | 'p'; // or etc as needed.
   type?: HeadingType;
   color?: 'primary' | 'secondary' | 'inverted';
+  align?: 'left' | 'center';
 };
 
 export default function Heading({
@@ -21,14 +22,16 @@ export default function Heading({
   as,
   type = 'h1',
   color = 'primary',
+  align = 'left',
 }: Props) {
   // if `as` is not provided, assign a default html based on `type` prop.
   const HtmlElement = as ?? typeToHtml[type];
 
   const className = [
-    styles.Heading,
-    styles[`Heading--type-${type}`],
-    styles[`Heading--color-${color}`],
+    styles.root,
+    styles[`type-${type}`],
+    styles[`color-${color}`],
+    styles[`align-${align}`],
   ].join(' ');
 
   return <HtmlElement className={className}>{children}</HtmlElement>;
