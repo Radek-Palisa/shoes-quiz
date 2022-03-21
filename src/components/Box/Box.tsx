@@ -5,6 +5,7 @@ type Space = 'none' | 'spaceMd';
 
 type Props = {
   children: ReactNode;
+  as?: 'div' | 'ul';
   direction?: 'row' | 'column';
   alignItems?: 'start' | 'center';
   justifyContent?: 'start' | 'center';
@@ -18,6 +19,7 @@ type Props = {
 
 export default function Box({
   children,
+  as: HtmlElement = 'div',
   direction = 'column',
   alignItems = 'start',
   justifyContent = 'start',
@@ -36,5 +38,5 @@ export default function Box({
     styles[`height-${height}`],
   ].join(' ');
 
-  return <div className={className}>{children}</div>;
+  return <HtmlElement className={className}>{children}</HtmlElement>;
 }
