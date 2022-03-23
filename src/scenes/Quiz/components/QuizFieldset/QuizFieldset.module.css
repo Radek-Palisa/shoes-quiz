@@ -3,7 +3,7 @@
   max-width: 400px;
   display: flex;
   flex-direction: column;
-  gap: calc(var(--space-md) * 7);
+  gap: min(var(--space-xxxl) * 2, 17vh);
   padding-inline: var(--space-md);
-  padding-block: var(--space-md) var(--space-xxxl);
+  padding-bottom: var(--space-xxxl);
 }

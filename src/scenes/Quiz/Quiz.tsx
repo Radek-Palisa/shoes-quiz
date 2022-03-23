@@ -1,6 +1,6 @@
 import { Suspense, useState } from 'react';
 import { QuizAnswer } from '../../services/types';
-import Fade from '../../components/transitions/Fade';
+import Fade from '../../components/transitions/Fade/Fade';
 import { getQuizResult } from '../../services/queries/quizResult';
 import QuizResult from './scenes/QuizResult';
 import { useQuizData } from '../../services/queries/quizData';
@@ -90,7 +90,7 @@ export function Quiz() {
           30 days risk free
         </Caption>
       </Box>
-      <Box alignItems="center" justifyContent="center">
+      <Box alignItems="center" justifyContent="center" position="relative">
         <form onSubmit={(e) => e.preventDefault()}>
           {questions.map((question) => {
             const isCurrentQuestion = question.id === formState.currentQuestion;

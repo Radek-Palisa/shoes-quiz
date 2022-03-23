@@ -1,0 +1,28 @@
+.root {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.enter, .appear {
+  opacity: 0;
+}
+
+.enter-active, .appear-active {
+  opacity: 1;
+  transition: opacity 300ms;
+}
+
+.enter-active {
+  transition-delay: 100ms;
+}
+
+.exit {
+  opacity: 1;
+}
+
+.exit-active {
+  opacity: 0;
+  transition: opacity 100ms;
+}

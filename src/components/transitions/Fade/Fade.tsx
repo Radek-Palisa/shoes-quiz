@@ -1,5 +1,6 @@
 import { ReactNode, useRef } from 'react';
 import { CSSTransition } from 'react-transition-group';
+import styles from './Fade.module.css';
 
 type Props = {
   isShown: boolean;
@@ -13,14 +14,23 @@ export default function Fade({ isShown, children }: Props) {
     <CSSTransition
       nodeRef={divRef}
       timeout={{
-        enter: 200,
+        appear: 300,
         exit: 100,
+        enter: 400,
       }}
       in={isShown}
-      classNames="visible"
+      classNames={{
+        enter: styles.enter,
+        exit: styles.exit,
+        appear: styles.appear,
+        appearActive: styles['appear-active'],
+        enterActive: styles['enter-active'],
+        exitActive: styles['exit-active'],
+      }}
+      appear
       unmountOnExit
     >
-      <div ref={divRef} aria-hidden={!isShown}>
+      <div className={styles.root} ref={divRef} aria-hidden={!isShown}>
         {children}
       </div>
     </CSSTransition>
