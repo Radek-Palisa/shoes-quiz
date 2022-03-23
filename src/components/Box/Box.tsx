@@ -15,6 +15,7 @@ type Props = {
     block: Space;
   }>;
   height?: 'auto' | 'full';
+  position?: 'static' | 'relative';
 };
 
 export default function Box({
@@ -26,6 +27,7 @@ export default function Box({
   gap = 'spaceMd',
   padding,
   height = 'auto',
+  position = 'static',
 }: Props) {
   const className = [
     styles.root,
@@ -36,6 +38,7 @@ export default function Box({
     styles[`padding-inline-${padding?.inline ?? 'none'}`],
     styles[`padding-block-${padding?.block ?? 'none'}`],
     styles[`height-${height}`],
+    styles[`position-${position}`],
   ].join(' ');
 
   return <HtmlElement className={className}>{children}</HtmlElement>;
