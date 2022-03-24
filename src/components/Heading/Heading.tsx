@@ -11,7 +11,7 @@ const typeToHtml: Record<HeadingType, 'h1' | 'h2' | 'h4'> = {
 
 type Props = {
   children: ReactNode;
-  as?: 'h1' | 'h2' | 'legend' | 'p'; // or etc as needed.
+  as?: 'h1' | 'h2' | 'h3' | 'legend' | 'p'; // or etc as needed.
   type?: HeadingType;
   color?: 'primary' | 'secondary' | 'inverted';
   align?: 'left' | 'center';
