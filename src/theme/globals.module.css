@@ -11,6 +11,11 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+:global img {
+  display: block;
+  max-width: 100%;
+}
+
 :global fieldset {
   border: 0;
   padding: 0;

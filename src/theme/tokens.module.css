@@ -3,6 +3,7 @@
   --color-pitch-black: #000;
   --color-ocean: #3c6475;
   --color-dark-ocean: #253e47;
+  --background-color-light-gray: #f0f0f0;
   --typography-font-family-serif: 'Roboto Slab', serif;
   --typography-font-family-sans-serif: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
   'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -12,5 +13,6 @@
   --typography-color-inverted: #fff;
   --space-xs: 8px;
   --space-md: 16px;
+  --space-lg: 24px;
   --space-xxxl: 56px;
 }
