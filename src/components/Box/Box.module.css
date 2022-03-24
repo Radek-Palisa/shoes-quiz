@@ -47,3 +47,15 @@
 .padding-block-spaceMd {
   padding-block: var(--space-md);
 }
+
+.padding-inline-spaceLg {
+  padding-inline: var(--space-lg);
+}
+
+.padding-block-spaceLg {
+  padding-block: var(--space-lg);
+}
+
+.background-lightGray {
+  background: var(--background-color-light-gray);
+}

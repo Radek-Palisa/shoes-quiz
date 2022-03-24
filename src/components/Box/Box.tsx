@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 import styles from './Box.module.css';
 
-type Space = 'none' | 'spaceMd';
+type Space = 'none' | 'spaceMd' | 'spaceLg';
 
 type Props = {
   children: ReactNode;
@@ -16,6 +16,7 @@ type Props = {
   }>;
   height?: 'auto' | 'full';
   position?: 'static' | 'relative';
+  background?: 'white' | 'lightGray';
 };
 
 export default function Box({
@@ -28,6 +29,7 @@ export default function Box({
   padding,
   height = 'auto',
   position = 'static',
+  background = 'white',
 }: Props) {
   const className = [
     styles.root,
@@ -39,6 +41,7 @@ export default function Box({
     styles[`padding-block-${padding?.block ?? 'none'}`],
     styles[`height-${height}`],
     styles[`position-${position}`],
+    styles[`background-${background}`],
   ].join(' ');
 
   return <HtmlElement className={className}>{children}</HtmlElement>;
