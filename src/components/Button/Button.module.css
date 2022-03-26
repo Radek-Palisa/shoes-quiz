@@ -21,7 +21,7 @@
   border: 0;
   border-top: 4px solid transparent;
   border-bottom: 4px solid var(--color-pitch-black);
-  background: var(--color-black);
+  background: var(--background-color-black);
   composes: typography-button from '../../theme/theme.module.css';
 }
 

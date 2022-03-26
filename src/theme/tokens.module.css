@@ -1,8 +1,8 @@
 :global :root {
-  --color-black: #333;
   --color-pitch-black: #000;
   --color-ocean: #3c6475;
   --color-dark-ocean: #253e47;
+  --background-color-black: #333;
   --background-color-light-gray: #f0f0f0;
   --typography-font-family-serif: 'Roboto Slab', serif;
   --typography-font-family-sans-serif: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
