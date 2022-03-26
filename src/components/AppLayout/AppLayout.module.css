@@ -1,4 +1,5 @@
 .AppLayout {
+  /* this will cause overflow on iOS Safari, use 100svh when supported */
   min-height: 100vh;
   display: grid;
   grid-template-rows: auto 1fr;
