@@ -1,5 +1,5 @@
 import { Suspense, useState } from 'react';
-import { QuizAnswer } from '../../services/types';
+import { QuizAnswer, ShoesRating } from '../../services/types';
 import Fade from '../../components/transitions/Fade/Fade';
 import { getQuizResult } from '../../services/queries/quizResult';
 import QuizResult from './scenes/QuizResult';
@@ -12,9 +12,25 @@ import Button from '../../components/Button/Button';
 import Caption from '../../components/Caption/Caption';
 import QuizFieldset from './components/QuizFieldset/QuizFieldset';
 
+function isLastQuizQuestion({ nextQuestion }: QuizAnswer) {
+  return nextQuestion === '';
+}
+
+function increaseShoeRating(
+  ratingIncrease: ShoesRating,
+  currentRating: ShoesRating
+) {
+  return Object.fromEntries(
+    Object.entries(ratingIncrease).map(([shoeId, value]) => [
+      shoeId,
+      (currentRating[shoeId] ?? 0) + value,
+    ])
+  );
+}
+
 type QuizFormState = {
   currentQuestion: number;
-  rating: Record<string, number>;
+  rating: ShoesRating;
   isSubmitting: boolean;
   result: string[] | null;
 };
@@ -26,38 +42,35 @@ const initialState = {
   result: null,
 };
 
-export function Quiz() {
+function Quiz() {
   const { questions } = useQuizData();
   const [formState, setFormState] = useState<QuizFormState>(initialState);
 
-  const handleSubmit = (finalRating: [string, number][]) => {
-    getQuizResult(finalRating)
-      .then((result) => {
-        setFormState({ ...initialState, result });
-      })
-      .catch(() => {
-        alert('Something went wrong, please try again later');
-        setFormState(initialState);
-      });
+  const handleSubmit = async (finalRating: ShoesRating) => {
+    try {
+      const result = await getQuizResult(finalRating);
+      setFormState({ ...initialState, result });
+    } catch (error) {
+      alert('Something went wrong, please try again later');
+      setFormState(initialState);
+    }
   };
 
-  const handleAnswerClick = ({ nextQuestion, ratingIncrease }: QuizAnswer) => {
-    const newRating: [string, number][] = Object.entries(ratingIncrease).map(
-      ([shoeId, value]) => {
-        return [shoeId, (formState.rating[shoeId] ?? 0) + value];
-      }
-    );
+  const handleAnswerClick = (answer: QuizAnswer) => {
+    const { nextQuestion, ratingIncrease } = answer;
 
-    const isFinalQuestion = nextQuestion === '';
+    const newRating = increaseShoeRating(ratingIncrease, formState.rating);
+
+    const isLastQuestion = isLastQuizQuestion(answer);
 
     setFormState({
-      currentQuestion: isFinalQuestion ? -1 : nextQuestion,
-      rating: Object.fromEntries(newRating),
-      isSubmitting: isFinalQuestion,
+      currentQuestion: isLastQuestion ? -1 : (nextQuestion as number),
+      rating: newRating,
+      isSubmitting: isLastQuestion,
       result: null,
     });
 
-    if (isFinalQuestion) {
+    if (isLastQuestion) {
       handleSubmit(newRating);
     }
   };
@@ -110,6 +123,9 @@ export function Quiz() {
                     {question.answers.map((answer, index) => (
                       <Box as="li" key={`${question.id}-${index}`}>
                         <Button
+                          buttonType={
+                            isLastQuizQuestion(answer) ? 'submit' : 'button'
+                          }
                           color="inverted"
                           width="full"
                           onClick={() => handleAnswerClick(answer)}

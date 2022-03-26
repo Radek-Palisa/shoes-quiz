@@ -1,9 +1,11 @@
+export type ShoesRating = Record<string, number>;
+
 export type QuizAnswer = {
   id: number;
   copy: string;
   /** empty string means the quiz is finished */
   nextQuestion: number | '';
-  ratingIncrease: Record<string, number>;
+  ratingIncrease: ShoesRating;
 };
 
 export type QuizQuestion = {

@@ -1,10 +1,10 @@
 import { sleep } from '../utils/sleep';
 
-export async function getQuizResult(rating: [string, number][]) {
+export async function getQuizResult(rating: Record<string, number>) {
   await sleep(2000);
 
   // Assuming this logic would be on the server and we would fetch it.
-  const sortedShoeIds = rating
+  const sortedShoeIds = Object.entries(rating)
     .sort((a, b) => b[1] - a[1])
     .map(([shoeId]) => shoeId);
 
