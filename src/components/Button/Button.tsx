@@ -5,6 +5,7 @@ type Props = {
   children: ReactNode;
   onClick: () => void;
   onMouseOver?: () => void;
+  buttonType?: 'button' | 'submit';
   color?: 'primary' | 'secondary' | 'inverted';
   width?: 'full' | 'min' | 'auto';
 };
@@ -13,6 +14,7 @@ export default function Button({
   children,
   onClick,
   onMouseOver,
+  buttonType = 'button',
   color = 'primary',
   width = 'min',
 }: Props) {
@@ -26,7 +28,7 @@ export default function Button({
     <button
       className={className}
       onClick={onClick}
-      type="button"
+      type={buttonType}
       onMouseOver={onMouseOver}
     >
       {children}
