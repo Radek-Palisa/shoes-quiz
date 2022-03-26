@@ -43,5 +43,6 @@ export function useQuizData() {
 
 export function usePrefetchQuizQuestions() {
   const queryClient = useQueryClient();
-  return () => queryClient.prefetchQuery(QUERY_KEY, fetchQuizData);
+  return () =>
+    queryClient.prefetchQuery(QUERY_KEY, fetchQuizData, { staleTime: 600_000 });
 }
