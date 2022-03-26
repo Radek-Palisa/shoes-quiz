@@ -1,8 +1,9 @@
 .HomeBackground {
   height: 100%;
   background-color: #f5f2f2;
-  background-repeat: no-repeat;
-  background-size: auto 70%;
-  background-position: 10% 100%;
-  background-image: url("../../../../../public/assets/Background\ Image\ Start\ Screen.png");
+  background: 
+    linear-gradient(to bottom, rgba(255, 255, 255, 0) 85%,  rgba(245, 242, 242, 1) 98%), 
+    url("../../../../../public/assets/Background\ Image\ Start\ Screen.png") 
+      10% 100% / auto 70% 
+      no-repeat;
 }
