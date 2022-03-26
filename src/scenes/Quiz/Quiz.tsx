@@ -88,7 +88,12 @@ function Quiz() {
   }
 
   if (formState.result) {
-    return <QuizResult result={formState.result} />;
+    return (
+      <QuizResult
+        result={formState.result}
+        onRestartQuiz={() => setFormState(initialState)}
+      />
+    );
   }
 
   return (

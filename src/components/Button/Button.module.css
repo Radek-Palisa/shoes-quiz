@@ -3,6 +3,7 @@
   text-align: center;
   color: var(--typography-color-inverted);
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+  cursor: pointer;
 }
 
 .width-full {

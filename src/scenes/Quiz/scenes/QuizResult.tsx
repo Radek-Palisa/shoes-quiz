@@ -4,13 +4,16 @@ import Heading from '../../../components/Heading/Heading';
 import ProductCard from '../../../components/ProductCard/ProductCard';
 import Text from '../../../components/Text/Text';
 import { useQuizData } from '../../../services/queries/quizData';
+import QuizRestartLink from '../components/QuizRestartLink/QuizRestartLink';
 
 type Props = {
   result: string[];
+  onRestartQuiz: () => void;
 };
 
 export default function QuizResult({
   result: [winner, ...similarProfiles],
+  onRestartQuiz,
 }: Props) {
   const { shoes } = useQuizData();
 
@@ -19,7 +22,7 @@ export default function QuizResult({
   return (
     <main>
       <Box
-        padding={{ inline: 'spaceMd', block: 'spaceMd' }}
+        padding={{ inline: 'spaceMd', block: 'spaceLg' }}
         alignItems="stretch"
       >
         <Box padding={{ inline: 'spaceLg', block: 'spaceLg' }}>
@@ -78,6 +81,9 @@ export default function QuizResult({
               );
             })}
           </ul>
+          <Box alignItems="center">
+            <QuizRestartLink onClick={onRestartQuiz} />
+          </Box>
         </section>
       </Box>
     </main>

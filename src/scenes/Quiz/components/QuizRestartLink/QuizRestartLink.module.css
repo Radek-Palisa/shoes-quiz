@@ -1,0 +1,15 @@
+.root {
+  color: var(--typography-color-secondary);
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+.root::before {
+  content: '?';
+  display: inline-block;
+  padding-inline: 2px;
+  margin-right: 2px;
+  font-size: 0.8em;
+  border: 1px solid var(--typography-color-secondary);
+}
