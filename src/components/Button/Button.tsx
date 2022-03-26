@@ -4,6 +4,7 @@ import styles from './Button.module.css';
 type Props = {
   children: ReactNode;
   onClick: () => void;
+  onMouseOver?: () => void;
   color?: 'primary' | 'secondary' | 'inverted';
   width?: 'full' | 'min' | 'auto';
 };
@@ -11,6 +12,7 @@ type Props = {
 export default function Button({
   children,
   onClick,
+  onMouseOver,
   color = 'primary',
   width = 'min',
 }: Props) {
@@ -21,7 +23,12 @@ export default function Button({
   ].join(' ');
 
   return (
-    <button className={className} onClick={onClick} type="button">
+    <button
+      className={className}
+      onClick={onClick}
+      type="button"
+      onMouseOver={onMouseOver}
+    >
       {children}
     </button>
   );
