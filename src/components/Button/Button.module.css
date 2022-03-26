@@ -44,7 +44,7 @@
 .color-inverted {
   background-color: transparent;
   border: 1px solid var(--typography-color-inverted);
-  composes: typography-button-inverted from '../../theme/theme.module.css';
+  composes: typography-button-outlined from '../../theme/theme.module.css';
 }
 
 .color-inverted:hover {
