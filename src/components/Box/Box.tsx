@@ -7,7 +7,7 @@ type Props = {
   children: ReactNode;
   as?: 'div' | 'ul' | 'li';
   direction?: 'row' | 'column';
-  alignItems?: 'start' | 'center';
+  alignItems?: 'start' | 'center' | 'stretch';
   justifyContent?: 'start' | 'center';
   gap?: Space;
   padding?: Partial<{
