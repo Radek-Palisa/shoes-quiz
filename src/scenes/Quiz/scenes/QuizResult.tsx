@@ -1,3 +1,8 @@
+import Box from '../../../components/Box/Box';
+import Button from '../../../components/Button/Button';
+import Heading from '../../../components/Heading/Heading';
+import ProductCard from '../../../components/ProductCard/ProductCard';
+import Text from '../../../components/Text/Text';
 import { useQuizData } from '../../../services/queries/quizData';
 
 type Props = {
@@ -13,19 +18,68 @@ export default function QuizResult({
 
   return (
     <main>
-      <h1>Congratulations</h1>
-      <p>Winner: {winnerShoe?.name}</p>
-      <h2>Similar Profiles</h2>
-      <ul>
-        {similarProfiles.map((shoeId) => {
-          const shoe = shoes.get(shoeId);
-          return (
-            <li key={shoeId}>
-              <p>{shoe?.name}</p>
-            </li>
-          );
-        })}
-      </ul>
+      <Box
+        padding={{ inline: 'spaceMd', block: 'spaceMd' }}
+        alignItems="stretch"
+      >
+        <Box padding={{ inline: 'spaceLg', block: 'spaceLg' }}>
+          <Heading>Congratulations!</Heading>
+          <Text color="secondary">
+            Based on your selection we&apos;ve decided on {winnerShoe?.name}!
+            Enjoy the 30 day trial!
+          </Text>
+        </Box>
+        <div>
+          <ProductCard
+            image={
+              <img
+                src={`${process.env.PUBLIC_URL}${winnerShoe?.imageUrl}`}
+                alt={winnerShoe?.name}
+              />
+            }
+            title={winnerShoe?.name}
+            description="Your perfect partner in the world's fully-cushioned shoe for Running Remixed."
+            price="200 CHF"
+            productColor="Neon Grey"
+          />
+          <Box padding={{ inline: 'spaceLg', block: 'spaceLg' }}>
+            <Button color="secondary" width="full" onClick={() => {}}>
+              Show now
+            </Button>
+          </Box>
+        </div>
+        <section>
+          <Box padding={{ inline: 'spaceLg', block: 'spaceLg' }}>
+            <Heading as="h2">Similar Profiles</Heading>
+          </Box>
+          <ul>
+            {similarProfiles.map((shoeId) => {
+              const shoe = shoes.get(shoeId);
+              return (
+                <li key={shoeId}>
+                  <ProductCard
+                    image={
+                      <img
+                        src={`${process.env.PUBLIC_URL}${shoe?.imageUrl}`}
+                        alt={winnerShoe?.name}
+                      />
+                    }
+                    title={shoe?.name}
+                    description="Your perfect partner in the world's fully-cushioned shoe for Running Remixed."
+                    price="200 CHF"
+                    productColor="Neon Grey"
+                  />
+                  <Box padding={{ inline: 'spaceLg', block: 'spaceLg' }}>
+                    <Button color="secondary" width="full" onClick={() => {}}>
+                      Show now
+                    </Button>
+                  </Box>
+                </li>
+              );
+            })}
+          </ul>
+        </section>
+      </Box>
     </main>
   );
 }
