@@ -8,13 +8,9 @@ import QuizLoading from './components/QuizLoading/QuizLoading';
 import QuizLayout from './components/QuizLayout/QuizLayout';
 import Box from '../../components/Box/Box';
 import Heading from '../../components/Heading/Heading';
-import Button from '../../components/Button/Button';
 import Caption from '../../components/Caption/Caption';
-import QuizFieldset from './components/QuizFieldset/QuizFieldset';
-
-function isLastQuizQuestion({ nextQuestion }: QuizAnswer) {
-  return nextQuestion === '';
-}
+import QuizQuestion from './components/QuizQuestion/QuizQuestion';
+import isCurrentQuestionTheLast from './services/isCurrentQuestionTheLast';
 
 function increaseShoeRating(
   ratingIncrease: ShoesRating,
@@ -46,25 +42,24 @@ function Quiz() {
   const { questions } = useQuizData();
   const [formState, setFormState] = useState<QuizFormState>(initialState);
 
+  const handleRestartQuiz = () => setFormState(initialState);
+
   const handleSubmit = async (finalRating: ShoesRating) => {
     try {
       const result = await getQuizResult(finalRating);
       setFormState({ ...initialState, result });
-    } catch (error) {
+    } catch (e) {
       alert('Something went wrong, please try again later');
       setFormState(initialState);
     }
   };
 
-  const handleAnswerClick = (answer: QuizAnswer) => {
-    const { nextQuestion, ratingIncrease } = answer;
-
+  const handleAnswerClick = ({ nextQuestion, ratingIncrease }: QuizAnswer) => {
     const newRating = increaseShoeRating(ratingIncrease, formState.rating);
-
-    const isLastQuestion = isLastQuizQuestion(answer);
+    const isLastQuestion = isCurrentQuestionTheLast(nextQuestion);
 
     setFormState({
-      currentQuestion: isLastQuestion ? -1 : (nextQuestion as number),
+      currentQuestion: isLastQuestion ? -1 : nextQuestion,
       rating: newRating,
       isSubmitting: isLastQuestion,
       result: null,
@@ -89,10 +84,7 @@ function Quiz() {
 
   if (formState.result) {
     return (
-      <QuizResult
-        result={formState.result}
-        onRestartQuiz={() => setFormState(initialState)}
-      />
+      <QuizResult result={formState.result} onRestartQuiz={handleRestartQuiz} />
     );
   }
 
@@ -115,32 +107,10 @@ function Quiz() {
 
             return (
               <Fade key={question.id} isShown={isCurrentQuestion}>
-                <QuizFieldset>
-                  <Heading
-                    as="legend"
-                    type="h2"
-                    color="inverted"
-                    align="center"
-                  >
-                    {question.copy}
-                  </Heading>
-                  <Box as="ul" direction="row" justifyContent="center">
-                    {question.answers.map((answer, index) => (
-                      <Box as="li" key={`${question.id}-${index}`}>
-                        <Button
-                          buttonType={
-                            isLastQuizQuestion(answer) ? 'submit' : 'button'
-                          }
-                          color="inverted"
-                          width="full"
-                          onClick={() => handleAnswerClick(answer)}
-                        >
-                          {answer.copy}
-                        </Button>
-                      </Box>
-                    ))}
-                  </Box>
-                </QuizFieldset>
+                <QuizQuestion
+                  question={question}
+                  onAnswerClick={handleAnswerClick}
+                />
               </Fade>
             );
           })}
