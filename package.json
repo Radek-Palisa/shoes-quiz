@@ -36,12 +36,12 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
     "lint": "eslint"
   },
   "browserslist": {
     "production": [
-      ">0.2%",
+      "last 2 versions",
+      "not IE 11",
       "not dead",
       "not op_mini all"
     ],
