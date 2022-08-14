@@ -15,6 +15,8 @@ const queryClient = new QueryClient({
   },
 });
 
+// TEST commit
+
 ReactDOM.render(
   <StrictMode>
     <ErrorBoundary>
